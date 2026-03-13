@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Lucky 7</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Consolas;
+background:linear-gradient(135deg,#1d2b64,#f8cdda);
+min-height:100vh;
+color:white;
+}
+
+/* RAINBOW TEXT */
+
+.rainbow{
+background:linear-gradient(90deg,red,orange,yellow,green,cyan,blue,violet);
+-webkit-background-clip:text;
+color:transparent;
+font-weight:bold;
+}
+
+/* TITLE */
+
+h1{
+text-align:center;
+font-size:50px;
+margin:20px;
+}
+
+/* MENU BAR */
+
+.menu{
+display:flex;
+justify-content:center;
+gap:30px;
+padding:15px;
+background:rgba(0,0,0,0.3);
+}
+
+.menu button{
+padding:10px 25px;
+font-size:16px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+background:white;
+color:black;
+}
+
+/* CONTENT */
+
+#content{
+padding:40px;
+text-align:center;
+font-size:20px;
+}
+
+/* FEATURES */
+
+.feature{
+margin:15px auto;
+padding:15px;
+width:300px;
+border-radius:8px;
+cursor:pointer;
+background:white;
+color:black;
+font-weight:bold;
+}
+
+/* OUTPUT */
+
+#output{
+margin-top:25px;
+font-size:22px;
+padding:15px;
+background:rgba(0,0,0,0.3);
+border-radius:8px;
+}
+
+/* LINKS */
+
+a{
+display:block;
+margin:10px;
+font-size:18px;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1 class="rainbow">Lucky 7</h1>
+
+<div class="menu">
+<button onclick="showFeatures()">Lucky Features</button>
+<button onclick="showAbout()">About</button>
+</div>
+
+<div id="content">
+<p class="rainbow">Welcome to Lucky 7</p>
+</div>
+
+<script>
+
+/* SHOW FEATURES */
+
+function showFeatures(){
+
+document.getElementById("content").innerHTML = `
+
+<h2 class="rainbow">Luck Features</h2>
+
+<div class="feature" onclick="aura()">Aura Scanner</div>
+<div class="feature" onclick="lucky()">Lucky Numbers</div>
+<div class="feature" onclick="idea()">Idea Generator</div>
+<div class="feature" onclick="whatif()">What If Machine</div>
+<div class="feature" onclick="fate()">Fate Predictor</div>
+<div class="feature" onclick="fortune()">Fortune Teller</div>
+<div class="feature" onclick="quote()">Quote Teller</div>
+
+<div id="output" class="rainbow">Click a feature...</div>
+
+`;
+
+}
+
+/* ABOUT */
+
+function showAbout(){
+
+document.getElementById("content").innerHTML = `
+
+<h2 class="rainbow">About Lucky 7</h2>
+
+<p class="rainbow">This is the 7th website in the project series.</p>
+
+<p class="rainbow"><b>Check out our websites:</b></p>
+
+<a href="https://nightrangers.github.io/swag-of-horror/" target="_blank" class="rainbow">Swag of Horror</a>
+<a href="https://cypher-guard-ai.netlify.app/" target="_blank" class="rainbow">Cypher Guard AI</a>
+<a href="https://firewall-x.netlify.app/" target="_blank" class="rainbow">Firewall X</a>
+<a href="https://shadow-bite.netlify.app/" target="_blank" class="rainbow">Shadow Bite</a>
+<a href="https://quantum-arc.netlify.app/" target="_blank" class="rainbow">Quantum Arc</a>
+<a href="https://neuro-spark.netlify.app/" target="_blank" class="rainbow">Neuro Spark</a>
+
+`;
+
+}
+
+/* FEATURES */
+
+function aura(){
+
+let aura=Math.floor(Math.random()*10000);
+
+let types=["Lightning","Solar","Cosmic","Quantum","Fire","Shadow"];
+
+let t=types[Math.floor(Math.random()*types.length)];
+
+document.getElementById("output").innerHTML=
+"Aura Level: "+aura+"<br>Energy Type: "+t;
+
+}
+
+function lucky(){
+
+let nums=[];
+
+for(let i=0;i<5;i++){
+nums.push(Math.floor(Math.random()*100));
+}
+
+document.getElementById("output").innerHTML=
+"Your Lucky Numbers:<br>"+nums.join(" • ");
+
+}
+
+function idea(){
+
+let ideas=[
+"Backpack that charges phones while walking",
+"AI study assistant",
+"Drone that delivers snacks",
+"Shoes that track calories",
+"Smart mirror that gives advice"
+];
+
+let i=ideas[Math.floor(Math.random()*ideas.length)];
+
+document.getElementById("output").innerHTML=i;
+
+}
+
+function whatif(){
+
+let scenarios=[
+"What if gravity stopped for 10 seconds?",
+"What if animals could talk?",
+"What if humans could fly?",
+"What if robots ruled schools?"
+];
+
+let s=scenarios[Math.floor(Math.random()*scenarios.length)];
+
+document.getElementById("output").innerHTML=s;
+
+}
+
+function fate(){
+
+let fates=[
+"You will create something amazing.",
+"A big opportunity is coming.",
+"You will discover a powerful idea."
+];
+
+let f=fates[Math.floor(Math.random()*fates.length)];
+
+document.getElementById("output").innerHTML=f;
+
+}
+
+function fortune(){
+
+let fortunes=[
+"Today is your lucky day.",
+"A surprise success is near.",
+"Good news is coming soon."
+];
+
+let f=fortunes[Math.floor(Math.random()*fortunes.length)];
+
+document.getElementById("output").innerHTML=f;
+
+}
+
+async function quote(){
+
+document.getElementById("output").innerHTML="Searching for quote...";
+
+let response=await fetch("https://api.quotable.io/random");
+
+let data=await response.json();
+
+document.getElementById("output").innerHTML=
+'"'+data.content+'" <br>— '+data.author;
+
+}
+
+</script>
+
+</body>
+</html>
