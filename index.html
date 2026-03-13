@@ -12,9 +12,10 @@ font-family:Consolas;
 background:linear-gradient(135deg,#1d2b64,#f8cdda);
 min-height:100vh;
 color:white;
+text-align:center;
 }
 
-/* RAINBOW TEXT */
+/* rainbow text */
 
 .rainbow{
 background:linear-gradient(90deg,red,orange,yellow,green,cyan,blue,violet);
@@ -23,74 +24,61 @@ color:transparent;
 font-weight:bold;
 }
 
-/* TITLE */
+/* title */
 
 h1{
-text-align:center;
 font-size:50px;
 margin:20px;
 }
 
-/* MENU BAR */
+/* menu */
 
 .menu{
 display:flex;
 justify-content:center;
-gap:30px;
+gap:20px;
 padding:15px;
 background:rgba(0,0,0,0.3);
+flex-wrap:wrap;
 }
 
 .menu button{
-padding:10px 25px;
-font-size:16px;
+padding:10px 18px;
 border:none;
 border-radius:6px;
-cursor:pointer;
-background:white;
-color:black;
-}
-
-/* CONTENT */
-
-#content{
-padding:40px;
-text-align:center;
-font-size:20px;
-}
-
-/* FEATURES */
-
-.feature{
-margin:15px auto;
-padding:15px;
-width:300px;
-border-radius:8px;
 cursor:pointer;
 background:white;
 color:black;
 font-weight:bold;
 }
 
-/* OUTPUT */
+/* pages */
 
-#output{
-margin-top:25px;
-font-size:22px;
-padding:15px;
-background:rgba(0,0,0,0.3);
-border-radius:8px;
+.page{
+display:none;
+padding:40px;
 }
 
-/* LINKS */
+/* slot machine */
 
-a{
-display:block;
-margin:10px;
+.slot{
+font-size:60px;
+margin:30px;
+letter-spacing:20px;
+}
+
+button.action{
+padding:12px 30px;
 font-size:18px;
+cursor:pointer;
+border:none;
+border-radius:8px;
+background:white;
+color:black;
 }
 
 </style>
+
 </head>
 
 <body>
@@ -98,90 +86,199 @@ font-size:18px;
 <h1 class="rainbow">Lucky 7</h1>
 
 <div class="menu">
-<button onclick="showFeatures()">Lucky Features</button>
-<button onclick="showAbout()">About</button>
+
+<button onclick="showPage('home')">Home</button>
+<button onclick="showPage('aura')">Aura Scanner</button>
+<button onclick="showPage('numbers')">Lucky Numbers</button>
+<button onclick="showPage('idea')">Idea Generator</button>
+<button onclick="showPage('whatif')">What If</button>
+<button onclick="showPage('fate')">Fate</button>
+<button onclick="showPage('fortune')">Fortune</button>
+<button onclick="showPage('quote')">Quote Teller</button>
+<button onclick="showPage('slot')">Lucky Spin</button>
+<button onclick="showPage('about')">About</button>
+
 </div>
 
-<div id="content">
-<p class="rainbow">Welcome to Lucky 7</p>
+<!-- HOME -->
+
+<div id="home" class="page">
+
+<h2 class="rainbow">Welcome to Lucky 7</h2>
+<p class="rainbow">Explore the luck features from the menu above.</p>
+
+</div>
+
+<!-- AURA -->
+
+<div id="aura" class="page">
+
+<h2 class="rainbow">Aura Scanner</h2>
+
+<button class="action" onclick="scanAura()">Scan Aura</button>
+
+<p id="auraResult"></p>
+
+</div>
+
+<!-- NUMBERS -->
+
+<div id="numbers" class="page">
+
+<h2 class="rainbow">Lucky Numbers</h2>
+
+<button class="action" onclick="luckyNumbers()">Generate</button>
+
+<p id="numberResult"></p>
+
+</div>
+
+<!-- IDEA -->
+
+<div id="idea" class="page">
+
+<h2 class="rainbow">Idea Generator</h2>
+
+<button class="action" onclick="generateIdea()">Generate Idea</button>
+
+<p id="ideaResult"></p>
+
+</div>
+
+<!-- WHAT IF -->
+
+<div id="whatif" class="page">
+
+<h2 class="rainbow">What If Machine</h2>
+
+<button class="action" onclick="generateWhatIf()">Generate</button>
+
+<p id="whatifResult"></p>
+
+</div>
+
+<!-- FATE -->
+
+<div id="fate" class="page">
+
+<h2 class="rainbow">Fate Predictor</h2>
+
+<button class="action" onclick="predictFate()">Reveal</button>
+
+<p id="fateResult"></p>
+
+</div>
+
+<!-- FORTUNE -->
+
+<div id="fortune" class="page">
+
+<h2 class="rainbow">Fortune Teller</h2>
+
+<button class="action" onclick="tellFortune()">Tell Fortune</button>
+
+<p id="fortuneResult"></p>
+
+</div>
+
+<!-- QUOTE -->
+
+<div id="quote" class="page">
+
+<h2 class="rainbow">Quote Teller</h2>
+
+<button class="action" onclick="getQuote()">Get Quote</button>
+
+<p id="quoteResult"></p>
+
+</div>
+
+<!-- SLOT MACHINE -->
+
+<div id="slot" class="page">
+
+<h2 class="rainbow">Lucky Spin</h2>
+
+<div class="slot" id="slotDisplay">0 | 0 | 0</div>
+
+<button class="action" onclick="spin()">SPIN</button>
+
+<p id="slotResult"></p>
+
+</div>
+
+<!-- ABOUT -->
+
+<div id="about" class="page">
+
+<h2 class="rainbow">About Lucky 7</h2>
+
+<p class="rainbow">Check out our websites:</p>
+
+<p><a href="https://nightrangers.github.io/swag-of-horror/" target="_blank">Swag of Horror</a></p>
+
+<p><a href="https://cypher-guard-ai.netlify.app/" target="_blank">Cypher Guard AI</a></p>
+
+<p><a href="https://firewall-x.netlify.app/" target="_blank">Firewall X</a></p>
+
+<p><a href="https://shadow-bite.netlify.app/" target="_blank">Shadow Bite</a></p>
+
+<p><a href="https://quantum-arc.netlify.app/" target="_blank">Quantum Arc</a></p>
+
+<p><a href="https://neuro-spark.netlify.app/" target="_blank">Neuro Spark</a></p>
+
 </div>
 
 <script>
 
-/* SHOW FEATURES */
+/* page switch */
 
-function showFeatures(){
+function showPage(page){
 
-document.getElementById("content").innerHTML = `
+let pages=document.querySelectorAll(".page");
 
-<h2 class="rainbow">Luck Features</h2>
+pages.forEach(p=>p.style.display="none");
 
-<div class="feature" onclick="aura()">Aura Scanner</div>
-<div class="feature" onclick="lucky()">Lucky Numbers</div>
-<div class="feature" onclick="idea()">Idea Generator</div>
-<div class="feature" onclick="whatif()">What If Machine</div>
-<div class="feature" onclick="fate()">Fate Predictor</div>
-<div class="feature" onclick="fortune()">Fortune Teller</div>
-<div class="feature" onclick="quote()">Quote Teller</div>
-
-<div id="output" class="rainbow">Click a feature...</div>
-
-`;
+document.getElementById(page).style.display="block";
 
 }
 
-/* ABOUT */
+showPage("home");
 
-function showAbout(){
+/* aura */
 
-document.getElementById("content").innerHTML = `
-
-<h2 class="rainbow">About Lucky 7</h2>
-
-<p class="rainbow">This is the 7th website in the project series.</p>
-
-<p class="rainbow"><b>Check out our websites:</b></p>
-
-<a href="https://nightrangers.github.io/swag-of-horror/" target="_blank" class="rainbow">Swag of Horror</a>
-<a href="https://cypher-guard-ai.netlify.app/" target="_blank" class="rainbow">Cypher Guard AI</a>
-<a href="https://firewall-x.netlify.app/" target="_blank" class="rainbow">Firewall X</a>
-<a href="https://shadow-bite.netlify.app/" target="_blank" class="rainbow">Shadow Bite</a>
-<a href="https://quantum-arc.netlify.app/" target="_blank" class="rainbow">Quantum Arc</a>
-<a href="https://neuro-spark.netlify.app/" target="_blank" class="rainbow">Neuro Spark</a>
-
-`;
-
-}
-
-/* FEATURES */
-
-function aura(){
+function scanAura(){
 
 let aura=Math.floor(Math.random()*10000);
 
-let types=["Lightning","Solar","Cosmic","Quantum","Fire","Shadow"];
+let types=["Lightning","Cosmic","Solar","Quantum","Fire","Shadow"];
 
 let t=types[Math.floor(Math.random()*types.length)];
 
-document.getElementById("output").innerHTML=
+document.getElementById("auraResult").innerHTML=
 "Aura Level: "+aura+"<br>Energy Type: "+t;
 
 }
 
-function lucky(){
+/* lucky numbers */
+
+function luckyNumbers(){
 
 let nums=[];
 
 for(let i=0;i<5;i++){
+
 nums.push(Math.floor(Math.random()*100));
-}
-
-document.getElementById("output").innerHTML=
-"Your Lucky Numbers:<br>"+nums.join(" • ");
 
 }
 
-function idea(){
+document.getElementById("numberResult").innerHTML=nums.join(" • ");
+
+}
+
+/* idea */
+
+function generateIdea(){
 
 let ideas=[
 "Backpack that charges phones while walking",
@@ -191,65 +288,116 @@ let ideas=[
 "Smart mirror that gives advice"
 ];
 
-let i=ideas[Math.floor(Math.random()*ideas.length)];
-
-document.getElementById("output").innerHTML=i;
+document.getElementById("ideaResult").innerHTML=
+ideas[Math.floor(Math.random()*ideas.length)];
 
 }
 
-function whatif(){
+/* what if */
 
-let scenarios=[
-"What if gravity stopped for 10 seconds?",
-"What if animals could talk?",
+function generateWhatIf(){
+
+let list=[
 "What if humans could fly?",
+"What if animals talked?",
+"What if gravity stopped?",
 "What if robots ruled schools?"
 ];
 
-let s=scenarios[Math.floor(Math.random()*scenarios.length)];
-
-document.getElementById("output").innerHTML=s;
+document.getElementById("whatifResult").innerHTML=
+list[Math.floor(Math.random()*list.length)];
 
 }
 
-function fate(){
+/* fate */
 
-let fates=[
+function predictFate(){
+
+let list=[
 "You will create something amazing.",
 "A big opportunity is coming.",
 "You will discover a powerful idea."
 ];
 
-let f=fates[Math.floor(Math.random()*fates.length)];
-
-document.getElementById("output").innerHTML=f;
+document.getElementById("fateResult").innerHTML=
+list[Math.floor(Math.random()*list.length)];
 
 }
 
-function fortune(){
+/* fortune */
 
-let fortunes=[
+function tellFortune(){
+
+let list=[
 "Today is your lucky day.",
 "A surprise success is near.",
-"Good news is coming soon."
+"Good news is coming."
 ];
 
-let f=fortunes[Math.floor(Math.random()*fortunes.length)];
-
-document.getElementById("output").innerHTML=f;
+document.getElementById("fortuneResult").innerHTML=
+list[Math.floor(Math.random()*list.length)];
 
 }
 
-async function quote(){
+/* quote */
 
-document.getElementById("output").innerHTML="Searching for quote...";
+async function getQuote(){
+
+document.getElementById("quoteResult").innerHTML="Searching...";
 
 let response=await fetch("https://api.quotable.io/random");
 
 let data=await response.json();
 
-document.getElementById("output").innerHTML=
-'"'+data.content+'" <br>— '+data.author;
+document.getElementById("quoteResult").innerHTML=
+'"'+data.content+'" — '+data.author;
+
+}
+
+/* slot machine animation */
+
+function spin(){
+
+let display=document.getElementById("slotDisplay");
+let result=document.getElementById("slotResult");
+
+let spins=0;
+
+let interval=setInterval(function(){
+
+let a=Math.floor(Math.random()*10);
+let b=Math.floor(Math.random()*10);
+let c=Math.floor(Math.random()*10);
+
+display.innerHTML=a+" | "+b+" | "+c;
+
+spins++;
+
+if(spins>20){
+
+clearInterval(interval);
+
+if(a==7 && b==7 && c==7){
+
+result.innerHTML="JACKPOT!!!";
+
+}
+
+else if(a==7 || b==7 || c==7){
+
+result.innerHTML="You got lucky!";
+
+}
+
+else{
+
+result.innerHTML="Try again";
+
+}
+
+}
+
+},100);
 
 }
 
